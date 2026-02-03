@@ -1,0 +1,723 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Letter 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#a979ff" />
+  <style>
+    /* BODY */
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #a979ff 0%, #f0c3ff 50%, #ffd6ff 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #4a145a;
+      overflow-x: hidden;
+      padding: 20px 15px;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* ANIMATED BACKGROUND ELEMENTS */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .particle:nth-child(1) { width: 20px; height: 20px; top: 10%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 15px; height: 15px; top: 20%; left: 80%; animation-delay: 1s; }
+    .particle:nth-child(3) { width: 25px; height: 25px; top: 60%; left: 10%; animation-delay: 2s; }
+    .particle:nth-child(4) { width: 10px; height: 10px; top: 40%; left: 70%; animation-delay: 3s; }
+    .particle:nth-child(5) { width: 18px; height: 18px; top: 80%; left: 30%; animation-delay: 4s; }
+
+    /* ANIMATED BUTTERFLIES */
+    .butterfly {
+      position: fixed;
+      font-size: 32px;
+      animation: butterflyFloat 12s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    @keyframes butterflyFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
+      50% { transform: translateY(-40px) rotate(0deg) scale(1); }
+      75% { transform: translateY(-20px) rotate(-5deg) scale(1.1); }
+    }
+
+    /* ANIMATED FLOWERS */
+    .flower {
+      position: fixed;
+      font-size: 28px;
+      animation: flowerFloat 10s ease-in-out infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+    
+    @keyframes flowerFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-15px) scale(1.2); }
+    }
+
+    /* ANIMATED HEARTS */
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      animation: heartBeat 2s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    /* FLOATING EMOJIS */
+    .float {
+      position: fixed;
+      font-size: 24px;
+      animation: floatUp 10s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    /* LETTER SECTION */
+    #letter {
+      background: linear-gradient(145deg, #ffffff, #f8f0ff);
+      max-width: 800px;
+      width: 90vw;
+      margin: 0 auto;
+      padding: 60px 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(157, 78, 221, 0.25);
+      text-align: center;
+      color: #4a145a;
+      border: 2px solid rgba(157, 78, 221, 0.3);
+      backdrop-filter: blur(10px);
+      animation: slideIn 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* DECOR */
+    .decor {
+      font-size: 32px;
+      margin: 20px 0;
+      animation: pulse 3s ease-in-out infinite;
+      align-self: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* IMAGE */
+    .photo {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      margin: 25px auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: block;
+      border: 3px solid rgba(157, 78, 221, 0.3);
+      transition: transform 0.3s ease;
+      align-self: center;
+    }
+
+    .photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    /* MESSAGE */
+    p {
+      text-align: justify;
+      line-height: 1.9;
+      max-width: 900px;
+      margin: 25px auto;
+      font-size: 18px;
+      color: #3a0a40;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      animation: fadeInText 1.5s ease-out;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+      text-align: left;
+      align-self: flex-start;
+    }
+
+    /* Center align specific paragraphs */
+    #letter p.center-text {
+      text-align: center;
+      align-self: center;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #6a0dad;
+      margin-bottom: 25px;
+      font-size: 40px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.15);
+      animation: titleBounce 1s ease-out;
+      align-self: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    @keyframes titleBounce {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    strong {
+      color: #9d4edd;
+      font-weight: 800;
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ENVELOPE ANIMATION STYLES */
+    #envelope-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      display: block;
+      cursor: pointer;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 200px;
+      height: 150px;
+    }
+
+    .envelope {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 150px;
+      perspective: 1000px;
+    }
+
+    .envelope-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform-origin: top;
+      animation: envelopeSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes envelopeSlideIn {
+      0% { transform: translateY(-50px) rotateX(-90deg); opacity: 0; }
+      100% { transform: translateY(0) rotateX(0deg); opacity: 1; }
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(135deg, #7b2cbf, #5a189a);
+      border-radius: 15px 15px 0 0;
+      transform-origin: top;
+      z-index: 2;
+      animation: flapSlideIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both;
+    }
+
+    @keyframes flapSlideIn {
+      0% { transform: rotateX(-180deg); }
+      100% { transform: rotateX(0deg); }
+    }
+
+    .heart-seal {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      z-index: 3;
+      animation: heartBeatEnvelope 1s ease-in-out infinite;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @keyframes heartBeatEnvelope {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.3); }
+    }
+
+    .letter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 160px;
+      height: 110px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: letterSlideIn 0.8s ease-out 0.5s both;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @keyframes letterSlideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter-content h3 {
+      margin: 0 0 5px 0;
+      color: #6a0dad;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .letter-content p {
+      margin: 0;
+      color: #4a145a;
+      font-size: 12px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ENVELOPE OPENING ANIMATION */
+    .envelope.opening .envelope-flap {
+      animation: flapOpen 0.8s ease-in-out forwards;
+    }
+
+    .envelope.opening .letter {
+      animation: letterFlyOut 0.8s ease-out forwards;
+    }
+
+    @keyframes flapOpen {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(-180deg); }
+    }
+
+    @keyframes letterFlyOut {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+    }
+
+    /* LETTER CONTENT APPEARANCE AFTER ENVELOPE */
+    #letter.letter-opened {
+      animation: contentReveal 0.8s ease-out;
+    }
+
+    @keyframes contentReveal {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(157, 78, 221, 0.4);
+      font-weight: 700;
+      letter-spacing: 1px;
+      align-self: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(157, 78, 221, 0.6);
+      background: linear-gradient(135deg, #7b2cbf, #5a189a);
+    }
+
+  </style>
+
+  <!-- MOBILE RESPONSIVE CSS -->
+  <style>
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      /* LETTER SECTION MOBILE */
+      #letter {
+        padding: 40px 25px;
+        margin: 20px auto;
+        width: 95vw;
+      }
+      
+      h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      
+      .decor {
+        font-size: 24px;
+        margin: 15px 0;
+      }
+      
+      .photo {
+        max-width: 100%;
+        margin: 20px auto;
+      }
+      
+      p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 20px auto;
+      }
+      
+      strong {
+        font-size: 16px;
+      }
+
+      /* ANIMATED ELEMENTS MOBILE */
+      .butterfly, .flower, .heart {
+        font-size: 24px;
+      }
+      
+      /* BODY MOBILE */
+      body {
+        padding: 15px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* SMALL MOBILE DEVICES */
+      #letter {
+        padding: 30px 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .decor {
+        font-size: 20px;
+      }
+      
+      p {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* VERY SMALL DEVICES */
+      #letter {
+        padding: 25px 15px;
+      }
+      
+      h1 {
+        font-size: 20px;
+      }
+      
+      .decor {
+        font-size: 18px;
+      }
+      
+      p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 18px;
+      }
+    }
+
+    /* TOUCH-FRIENDLY INTERACTIONS */
+    @media (hover: none) and (pointer: coarse) {
+      .back-btn {
+        min-height: 44px; /* Apple's recommended touch target size */
+        padding: 14px 30px;
+      }
+    }
+
+    /* iPhone 16 Specific Optimizations */
+    @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro (6.1-inch) specific styles */
+      body {
+        padding: 25px 20px 80px 20px; /* Extra bottom padding for home indicator */
+      }
+      
+      #letter {
+        padding: 50px 30px;
+        margin: 25px auto;
+      }
+      
+      h1 {
+        font-size: 32px;
+        margin-bottom: 25px;
+      }
+      
+      .decor {
+        font-size: 26px;
+        margin: 18px 0;
+      }
+      
+      .photo {
+        margin: 25px auto;
+      }
+      
+      p {
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 20px auto;
+      }
+      
+      strong {
+        font-size: 16px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 26px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(20px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Plus Specific Optimizations */
+    @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Plus (6.7-inch) specific styles */
+      body {
+        padding: 30px 25px 90px 25px;
+      }
+      
+      #letter {
+        padding: 60px 40px;
+        margin: 30px auto;
+      }
+      
+      h1 {
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+      
+      .decor {
+        font-size: 30px;
+        margin: 22px 0;
+      }
+      
+      .photo {
+        margin: 30px auto;
+      }
+      
+      p {
+        font-size: 17px;
+        line-height: 1.9;
+        margin: 25px auto;
+      }
+      
+      strong {
+        font-size: 17px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 30px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(25px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Pro Max Specific Optimizations */
+    @media only screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro Max (6.9-inch) specific styles */
+      body {
+        padding: 35px 30px 100px 30px;
+      }
+      
+      #letter {
+        padding: 70px 50px;
+        margin: 35px auto;
+      }
+      
+      h1 {
+        font-size: 38px;
+        margin-bottom: 35px;
+      }
+      
+      .decor {
+        font-size: 32px;
+        margin: 25px 0;
+      }
+      
+      .photo {
+        margin: 35px auto;
+      }
+      
+      p {
+        font-size: 18px;
+        line-height: 2.0;
+        margin: 30px auto;
+      }
+      
+      strong {
+        font-size: 18px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 32px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(30px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+  </style>
+
+  <script>
+    // Envelope animation when page loads
+    window.addEventListener('load', function() {
+      const envelopeContainer = document.getElementById("envelope-container");
+      const envelope = document.querySelector(".envelope");
+      const letter = document.querySelector(".letter");
+      const letterContent = document.querySelector(".letter-content");
+
+      // Automatically trigger envelope opening animation after a short delay
+      setTimeout(function() {
+        // Trigger opening animation
+        envelope.classList.add("opening");
+
+        // After animation completes, hide envelope and show content
+        setTimeout(function() {
+          envelopeContainer.style.display = "none";
+          document.getElementById("letter").classList.add("letter-opened");
+        }, 800); // Match animation duration
+      }, 1000); // Wait 1 second before starting animation
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ANIMATED BUTTERFLIES AND FLOWERS -->
+  <div class="butterfly" style="top: 15%; left: 10%; animation-delay: 0s;">🦋</div>
+  <div class="butterfly" style="top: 25%; left: 85%; animation-delay: 2s;">🦋</div>
+  <div class="butterfly" style="top: 65%; left: 15%; animation-delay: 4s;">🦋</div>
+  <div class="butterfly" style="top: 45%; left: 75%; animation-delay: 1s;">🦋</div>
+  <div class="butterfly" style="top: 80%; left: 35%; animation-delay: 3s;">🦋</div>
+
+  <!-- FLOWERS -->
+  <div class="flower" style="top: 10%; left: 20%; animation-delay: 1s;">🌸</div>
+  <div class="flower" style="top: 20%; left: 60%; animation-delay: 3s;">🌷</div>
+  <div class="flower" style="top: 70%; left: 5%; animation-delay: 5s;">💐</div>
+  <div class="flower" style="top: 50%; left: 80%; animation-delay: 2s;">🌹</div>
+  <div class="flower" style="top: 85%; left: 50%; animation-delay: 4s;">🌺</div>
+
+  <!-- HEARTS -->
+  <div class="heart" style="top: 12%; left: 5%; animation-delay: 0.5s;">💜</div>
+  <div class="heart" style="top: 30%; left: 90%; animation-delay: 2.5s;">💖</div>
+  <div class="heart" style="top: 55%; left: 25%; animation-delay: 4.5s;">💕</div>
+  <div class="heart" style="top: 75%; left: 65%; animation-delay: 1.5s;">💗</div>
+
+    <!-- BIRTHDAY LETTER -->
+  <div id="letter">
+    <div class="decor">💜🦋🌸💖🦋🌸💜</div>
+
+    <h1>🎉 Happy Birthday, banunaayyy! 🎂</h1>
+
+    <a href="question.html" style="display: block; text-decoration: none;">
+      <img src="image/nunay.png" alt="Us together 💜" class="photo" />
+    </a>
+
+    <p>
+      Dear bebe,<br><br>
+      I made this website just for you because you are an amzing cousin and best sister i've ever had in my entire life. Entire life kasi dko bati si juls hahahah. Sorry if late na ako nkapag send sayo ng gift. I hope ma aapreciate mo tong ginawa ko hehe. 🤭 I miss youu so muchh nunay koo. I hope you have a very nice day and happy life in there, na kikita ko nmn na masaya ka jn, and if nkakakafeel ka ng lonelyness, don't hesitate to chat or call me. Maliban nlg pag wala me load haha. Anyways, happy birthday again, nunayy. Legal age kna, sana pwede kna mag inom hahahhaha. Ay pwede na pla. I hope na enjoy mo ung araw mo, walang celebration jn, feel ko tuloy dto mo iceceleb 18th mo. Kung mangyari man yon, I can't wait na mka uwi kna and mka bonding na ulit tayo. Ang dami kong ikkwento sayo kahit dko na chichika sayo in chat hahahaha. I miss our bonding and the night you flew away, i realize na ano nlg ung reason pag uuwi ako ng buco? hahaha letche na iiyak ako wtf. 🤧 I put an effort to this gift because i want to prove it to you na may na tututunan ako HAHAHAHHA eme lg. Kase dba what if, kunin mo ako dba. 1yr nlg oh graduated na ako ng Bachelor of Science Information Technology or should i say BSIT. Sheesshhh. Na parang bang ang talino ko na nyan HAHAHAHAH. Once na umuwi ka iiyak ako, d ako aalis sa tabi mo hahahaha. Takte na mimiss na tlga kita, nung nag vm ka saken non, totoo yon, nung na rinig ko boses mo na iyak ako. Kase takte ang bilis. Mag 2 yrs na agd kayo or mag 3 dko na alm. Ang bilis ng panahon. I hope u guys are okay in there. I'm so happy when i see you happy, you can do the things na hindi mo pa na gagawa here sa Philippines and enjoying the world, the place. I'm so proud of you, kahit hindi ko na kikita mga ginagawa mo. Na pproud pa ako lalo kase parang dati lg na hihiya kpa makipag usap ganon ganon sa ibang tao, pero ngayon, hays, madaldal na. Na aalala mo yon ung pinakanta tayong dalawa kase kesyo maganda dw boses nten HAHAHAHAH letche ang cringe. Tapos hindi pwedeng hindi tayo mag kaparehas ng damit. Couple dress pa yarn hahahahha. Pero okay na din yan, naging successful na din sila tita ilyn, and na kuha kayo. I love you always, bebe. Mag ingat kayo always. Stay gullible and humble. Iwasan ang pagiging attitude, kase hindi bagay sayo, like literal. Wag muna mag boyfriend. 😘❤️
+      <br><br>💖  
+      You're an amazing cousin and I'm so grateful for you.
+    </p>
+
+    <p>
+      May your birthday be full of happiness, love, and joy 🍰✨
+    </p>
+
+    <p>
+      Love,<br />
+      <strong>Your bebe, jushle katee 💖</strong>
+    </p>
+
+    <div class="decor">💜🌸🦋💖🦋🌸💜</div>
+
+    <a href="index.html" class="back-btn">← Back to Password</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎉 Surprise Fireworks! 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#000000" />
+  <style>
+    /* BODY */
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* FIREWORKS CONTAINER */
+    #fireworks-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* MESSAGE OVERLAY */
+    #message-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      color: white;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin: 0 0 20px 0;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff00ff, #ffff00, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: rainbow 3s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    p {
+      font-size: 24px;
+      margin: 0;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    .emoji {
+      font-size: 40px;
+      display: block;
+      margin: 20px 0;
+      animation: floatUpBig 2s ease-out;
+    }
+
+    @keyframes floatUpBig {
+      0% { transform: translateY(20px) scale(0.5); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      z-index: 20;
+      opacity: 0;
+      animation: fadeInUp 2s ease 3s forwards;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* STARS BACKGROUND */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 40px;
+      }
+      
+      p {
+        font-size: 18px;
+      }
+      
+      .emoji {
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 30px;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+      
+      .emoji {
+        font-size: 24px;
+      }
+    }
+
+    /* TOUCH-FRIENDLY INTERACTIONS */
+    @media (hover: none) and (pointer: coarse) {
+      .back-btn {
+        min-height: 44px;
+        padding: 14px 30px;
+      }
+    }
+
+    /* iPhone 16 Specific Optimizations */
+    @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro (6.1-inch) specific styles */
+      body {
+        padding: 25px 20px 80px 20px; /* Extra bottom padding for home indicator */
+      }
+      
+      #message-overlay {
+        top: 45%;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+      
+      .emoji {
+        font-size: 26px;
+      }
+      
+      .back-btn {
+        font-size: 16px;
+        padding: 14px 30px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(20px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Plus Specific Optimizations */
+    @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Plus (6.7-inch) specific styles */
+      body {
+        padding: 30px 25px 90px 25px;
+      }
+      
+      #message-overlay {
+        top: 45%;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+      
+      p {
+        font-size: 18px;
+      }
+      
+      .emoji {
+        font-size: 30px;
+      }
+      
+      .back-btn {
+        font-size: 17px;
+        padding: 15px 35px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(25px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Pro Max Specific Optimizations */
+    @media only screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro Max (6.9-inch) specific styles */
+      body {
+        padding: 35px 30px 100px 30px;
+      }
+      
+      #message-overlay {
+        top: 45%;
+      }
+      
+      h1 {
+        font-size: 34px;
+      }
+      
+      p {
+        font-size: 20px;
+      }
+      
+      .emoji {
+        font-size: 32px;
+      }
+      
+      .back-btn {
+        font-size: 18px;
+        padding: 16px 40px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(30px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STARS BACKGROUND -->
+  <div id="stars"></div>
+
+  <!-- FIREWORKS CANVAS -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- MESSAGE OVERLAY -->
+  <div id="message-overlay">
+    <h1>🎉 SURPRISE! 💜</h1>
+    <div class="emoji">🎂✨🎆</div>
+    <p>Happy Birthday, Banunay!</p>
+    <p>i love you always so much. Love, Joy, Hope!!💜</p>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <button class="back-btn" onclick="goToLetter()">← Back to Letter</button>
+
+  <script>
+    // Fireworks Animation
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Star background
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+    createStars();
+
+    // Firework particle class
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 6 - 3;
+        this.speedY = Math.random() * 6 - 3;
+        this.gravity = 0.1;
+        this.friction = 0.95;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.02 + 0.015;
+      }
+
+      update() {
+        this.speedY += this.gravity;
+        this.speedX *= this.friction;
+        this.speedY *= this.friction;
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha -= this.decay;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Firework class
+    class Firework {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.particles = [];
+        this.colors = [
+          '#ff00ff', '#ffff00', '#00ffff', '#ff0000', 
+          '#00ff00', '#0000ff', '#ffaa00', '#ffffff'
+        ];
+        
+        // Create explosion particles
+        for (let i = 0; i < 80; i++) {
+          const color = this.colors[Math.floor(Math.random() * this.colors.length)];
+          this.particles.push(new Particle(this.x, this.y, color));
+        }
+      }
+
+      update() {
+        this.particles.forEach((particle, index) => {
+          particle.update();
+          if (particle.alpha <= 0) {
+            this.particles.splice(index, 1);
+          }
+        });
+      }
+
+      draw() {
+        this.particles.forEach(particle => particle.draw());
+      }
+    }
+
+    // Main animation
+    const fireworks = [];
+    let lastTime = 0;
+    let spawnTimer = 0;
+
+    function animate(currentTime) {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      // Clear canvas
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Spawn fireworks
+      spawnTimer += deltaTime;
+      if (spawnTimer > 300) { // Spawn every 300ms
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height * 0.5; // Top half of screen
+        fireworks.push(new Firework(x, y));
+        spawnTimer = 0;
+      }
+
+      // Update and draw fireworks
+      fireworks.forEach((firework, index) => {
+        firework.update();
+        firework.draw();
+        if (firework.particles.length === 0) {
+          fireworks.splice(index, 1);
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // Start animation
+    requestAnimationFrame(animate);
+
+    // Show message after 1 second
+    setTimeout(() => {
+      document.getElementById('message-overlay').style.opacity = '1';
+    }, 1000);
+
+    function goToLetter() {
+      // Add exit animation
+      document.body.style.transition = 'background 1s ease';
+      document.body.style.background = '#a979ff';
+      
+      setTimeout(() => {
+        window.location.href = 'letter.html';
+      }, 1000);
+    }
+
+    // Click anywhere to create more fireworks
+    canvas.addEventListener('click', (e) => {
+      fireworks.push(new Firework(e.clientX, e.clientY));
+    });
+
+    // Touch support for mobile
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      fireworks.push(new Firework(touch.clientX, touch.clientY));
+    }, { passive: false });
+  </script>
+</body>
+</html>

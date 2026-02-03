@@ -1,0 +1,702 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday 💜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <!-- iPhone 16 specific optimizations -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#a979ff" />
+  <style>
+    /* BODY */
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #a979ff 0%, #f0c3ff 50%, #ffd6ff 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #4a145a;
+      overflow-x: hidden;
+      padding: 20px 15px;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* ANIMATED BACKGROUND ELEMENTS */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .particle:nth-child(1) { width: 20px; height: 20px; top: 10%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { width: 15px; height: 15px; top: 20%; left: 80%; animation-delay: 1s; }
+    .particle:nth-child(3) { width: 25px; height: 25px; top: 60%; left: 10%; animation-delay: 2s; }
+    .particle:nth-child(4) { width: 10px; height: 10px; top: 40%; left: 70%; animation-delay: 3s; }
+    .particle:nth-child(5) { width: 18px; height: 18px; top: 80%; left: 30%; animation-delay: 4s; }
+
+    /* ANIMATED BUTTERFLIES */
+    .butterfly {
+      position: fixed;
+      font-size: 32px;
+      animation: butterflyFloat 12s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    @keyframes butterflyFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
+      50% { transform: translateY(-40px) rotate(0deg) scale(1); }
+      75% { transform: translateY(-20px) rotate(-5deg) scale(1.1); }
+    }
+
+    /* ANIMATED FLOWERS */
+    .flower {
+      position: fixed;
+      font-size: 28px;
+      animation: flowerFloat 10s ease-in-out infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+    
+    @keyframes flowerFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-15px) scale(1.2); }
+    }
+
+    /* ANIMATED HEARTS */
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      animation: heartBeat 2s ease-in-out infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    /* FLOATING EMOJIS */
+    .float {
+      position: fixed;
+      font-size: 24px;
+      animation: floatUp 10s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    /* LOCK SECTION */
+    #lock {
+      background: linear-gradient(145deg, #ffffff, #f8f0ff);
+      max-width: 600px;
+      margin: 0 auto 50px auto;
+      padding: 50px 60px;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(157, 78, 221, 0.25);
+      text-align: center;
+      border: 2px solid rgba(157, 78, 221, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #lock h2 {
+      font-weight: 800;
+      font-size: 32px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      color: #6a0dad;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #lock p.prompt {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: #4a145a;
+    }
+
+    #password {
+      width: 85%;
+      max-width: 350px;
+      padding: 16px 24px;
+      font-size: 18px;
+      border-radius: 20px;
+      border: 2px solid #e0aaff;
+      outline: none;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      font-family: inherit;
+      align-self: center;
+    }
+    #password:focus {
+      border-color: #9d4edd;
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.4), inset 0 2px 5px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 16px 45px;
+      font-size: 18px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(157, 78, 221, 0.4);
+      font-weight: 700;
+      letter-spacing: 1px;
+      align-self: center;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(157, 78, 221, 0.6);
+      background: linear-gradient(135deg, #7b2cbf, #5a189a);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+
+    #error {
+      margin-top: 20px;
+      color: #d64541;
+      font-weight: 700;
+      min-height: 24px;
+      font-size: 18px;
+      animation: shake 0.5s ease-in-out;
+      align-self: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* ENVELOPE ANIMATION STYLES */
+    #envelope-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      display: none;
+      cursor: pointer;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 200px;
+      height: 150px;
+    }
+
+    .envelope {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 150px;
+      perspective: 1000px;
+    }
+
+    .envelope-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform-origin: top;
+      animation: envelopeSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes envelopeSlideIn {
+      0% { transform: translateY(-50px) rotateX(-90deg); opacity: 0; }
+      100% { transform: translateY(0) rotateX(0deg); opacity: 1; }
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(135deg, #7b2cbf, #5a189a);
+      border-radius: 15px 15px 0 0;
+      transform-origin: top;
+      z-index: 2;
+      animation: flapSlideIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both;
+    }
+
+    @keyframes flapSlideIn {
+      0% { transform: rotateX(-180deg); }
+      100% { transform: rotateX(0deg); }
+    }
+
+    .heart-seal {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      z-index: 3;
+      animation: heartBeatEnvelope 1s ease-in-out infinite;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @keyframes heartBeatEnvelope {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.3); }
+    }
+
+    .letter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 160px;
+      height: 110px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: letterSlideIn 0.8s ease-out 0.5s both;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @keyframes letterSlideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter-content h3 {
+      margin: 0 0 5px 0;
+      color: #6a0dad;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .letter-content p {
+      margin: 0;
+      color: #4a145a;
+      font-size: 12px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ENVELOPE OPENING ANIMATION */
+    .envelope.opening .envelope-flap {
+      animation: flapOpen 0.8s ease-in-out forwards;
+    }
+
+    .envelope.opening .letter {
+      animation: letterFlyOut 0.8s ease-out forwards;
+    }
+
+    @keyframes flapOpen {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(-180deg); }
+    }
+
+    @keyframes letterFlyOut {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+    }
+
+
+  </style>
+
+  <!-- MOBILE RESPONSIVE CSS -->
+  <style>
+    /* MOBILE RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      /* LOCK SECTION MOBILE */
+      #lock {
+        padding: 30px 20px;
+        margin-bottom: 30px;
+      }
+      
+      #lock h2 {
+        font-size: 24px;
+        gap: 10px;
+      }
+      
+      #lock p.prompt {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      
+      #password {
+        width: 95%;
+        max-width: 100%;
+        padding: 14px 20px;
+        font-size: 16px;
+      }
+      
+      button {
+        padding: 14px 30px;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+
+      /* ANIMATED ELEMENTS MOBILE */
+      .butterfly, .flower, .heart {
+        font-size: 24px;
+      }
+      
+      /* BODY MOBILE */
+      body {
+        padding: 15px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* SMALL MOBILE DEVICES */
+      #lock {
+        padding: 25px 15px;
+      }
+      
+      #lock h2 {
+        font-size: 20px;
+      }
+      
+      #lock p.prompt {
+        font-size: 16px;
+      }
+      
+      #password {
+        font-size: 15px;
+        padding: 12px 16px;
+      }
+      
+      button {
+        font-size: 15px;
+        padding: 12px 25px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      /* VERY SMALL DEVICES */
+      #lock {
+        padding: 20px 10px;
+      }
+      
+      #lock h2 {
+        font-size: 18px;
+      }
+      
+      #lock p.prompt {
+        font-size: 14px;
+      }
+      
+      #password {
+        font-size: 14px;
+        padding: 10px 14px;
+      }
+      
+      button {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 18px;
+      }
+    }
+
+    /* TOUCH-FRIENDLY INTERACTIONS */
+    @media (hover: none) and (pointer: coarse) {
+      button {
+        min-height: 44px; /* Apple's recommended touch target size */
+        padding: 16px 45px;
+      }
+      
+      #password {
+        min-height: 44px;
+        padding: 14px 20px;
+      }
+      
+      .photo {
+        cursor: default; /* Remove hover effects on touch devices */
+      }
+    }
+
+    /* iPhone 16 Specific Optimizations */
+    @media only screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro (6.1-inch) specific styles */
+      body {
+        padding: 25px 20px 80px 20px; /* Extra bottom padding for home indicator */
+      }
+      
+      #lock {
+        padding: 60px 40px;
+        margin-bottom: 40px;
+      }
+      
+      #lock h2 {
+        font-size: 28px;
+        gap: 12px;
+      }
+      
+      #lock p.prompt {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      
+      #password {
+        font-size: 17px;
+        padding: 15px 20px;
+      }
+      
+      button {
+        font-size: 17px;
+        padding: 15px 40px;
+        margin-top: 25px;
+      }
+      
+      /* Adjust animated elements for iPhone 16 screen */
+      .butterfly, .flower, .heart {
+        font-size: 26px;
+      }
+      
+      /* Safe area handling for iPhone 16 */
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(20px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Plus Specific Optimizations */
+    @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Plus (6.7-inch) specific styles */
+      body {
+        padding: 30px 25px 90px 25px;
+      }
+      
+      #lock {
+        padding: 70px 50px;
+        margin-bottom: 50px;
+      }
+      
+      #lock h2 {
+        font-size: 32px;
+        gap: 15px;
+      }
+      
+      #lock p.prompt {
+        font-size: 20px;
+        margin-bottom: 25px;
+      }
+      
+      #password {
+        font-size: 18px;
+        padding: 18px 24px;
+      }
+      
+      button {
+        font-size: 18px;
+        padding: 18px 45px;
+        margin-top: 30px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 30px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(25px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+
+    /* iPhone 16 Pro Max Specific Optimizations */
+    @media only screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) {
+      /* iPhone 16 Pro Max (6.9-inch) specific styles */
+      body {
+        padding: 35px 30px 100px 30px;
+      }
+      
+      #lock {
+        padding: 80px 60px;
+        margin-bottom: 60px;
+      }
+      
+      #lock h2 {
+        font-size: 34px;
+        gap: 18px;
+      }
+      
+      #lock p.prompt {
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+      
+      #password {
+        font-size: 19px;
+        padding: 20px 28px;
+      }
+      
+      button {
+        font-size: 19px;
+        padding: 20px 50px;
+        margin-top: 35px;
+      }
+      
+      .butterfly, .flower, .heart {
+        font-size: 32px;
+      }
+      
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        body {
+          padding-bottom: max(30px, env(safe-area-inset-bottom));
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANIMATED BUTTERFLIES AND FLOWERS -->
+  <div class="butterfly" style="top: 15%; left: 10%; animation-delay: 0s;">🦋</div>
+  <div class="butterfly" style="top: 25%; left: 85%; animation-delay: 2s;">🦋</div>
+  <div class="butterfly" style="top: 65%; left: 15%; animation-delay: 4s;">🦋</div>
+  <div class="butterfly" style="top: 45%; left: 75%; animation-delay: 1s;">🦋</div>
+  <div class="butterfly" style="top: 80%; left: 35%; animation-delay: 3s;">🦋</div>
+
+  <!-- FLOWERS -->
+  <div class="flower" style="top: 10%; left: 20%; animation-delay: 1s;">🌸</div>
+  <div class="flower" style="top: 20%; left: 60%; animation-delay: 3s;">🌷</div>
+  <div class="flower" style="top: 70%; left: 5%; animation-delay: 5s;">💐</div>
+  <div class="flower" style="top: 50%; left: 80%; animation-delay: 2s;">🌹</div>
+  <div class="flower" style="top: 85%; left: 50%; animation-delay: 4s;">🌺</div>
+
+  <!-- HEARTS -->
+  <div class="heart" style="top: 12%; left: 5%; animation-delay: 0.5s;">💜</div>
+  <div class="heart" style="top: 30%; left: 90%; animation-delay: 2.5s;">💖</div>
+  <div class="heart" style="top: 55%; left: 25%; animation-delay: 4.5s;">💕</div>
+  <div class="heart" style="top: 75%; left: 65%; animation-delay: 1.5s;">💗</div>
+
+  <!-- ENVELOPE CONTAINER -->
+  <div id="envelope-container" style="display: none;">
+    <div class="envelope-wrapper">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+        <div class="heart-seal">💖</div>
+      </div>
+      <div class="letter">
+        <div class="letter-content">
+          <h3>Happy Birthday!</h3>
+          <p>Click to open your special message</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASSWORD LOCK -->
+  <div id="lock">
+    <h2>🦋 HAPPY BIRTHDAY BANUNAY <span>🦋</span></h2>
+    <p class="prompt">Enter the password to continue 💜</p>
+    <input type="password" id="password" placeholder="Password" />
+    <br />
+    <button onclick="checkPassword()">Enter</button>
+    <p id="error"></p>
+  </div>
+
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "iloveyou";
+      const enteredPassword = document.getElementById("password").value.trim();
+
+      if (enteredPassword === correctPassword) {
+        // Hide the lock section
+        document.getElementById("lock").style.display = "none";
+        
+        // Show envelope animation
+        showEnvelopeAnimation();
+      } else {
+        document.getElementById("error").innerText = "Wrong password 😢";
+      }
+    }
+
+    function showEnvelopeAnimation() {
+      const envelopeContainer = document.getElementById("envelope-container");
+      const envelope = document.querySelector(".envelope");
+
+      // Show envelope
+      envelopeContainer.style.display = "block";
+
+      // Add click event to open envelope
+      envelopeContainer.addEventListener('click', function() {
+        // Trigger opening animation
+        envelope.classList.add("opening");
+
+        // After animation completes, redirect to letter page
+        setTimeout(function() {
+          window.location.href = "letter.html";
+        }, 800); // Match animation duration
+      });
+    }
+  </script>
+</body>
+</html>
