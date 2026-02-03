@@ -165,7 +165,7 @@
 
   <h1>🎉 Happy Birthday, banunaayyy! 🎂</h1>
 
-  <img src="image/nunay.jpg" alt="Us together 💜" class="photo" />
+  <img src="Image/nunay.jpg" alt="Us together 💜" class="photo" />
 
   <p>
       Dear bebe,<br><br>
